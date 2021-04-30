@@ -1540,10 +1540,12 @@ __kmp_unnamed_critical_addr:
     .comm .gomp_critical_user_,32,8
     .data
     .align 8
-    .global __kmp_unnamed_critical_addr
-__kmp_unnamed_critical_addr:
+    .global KMP_PREFIX_UNDERSCORE(__kmp_unnamed_critical_addr)
+KMP_PREFIX_UNDERSCORE(__kmp_unnamed_critical_addr):
     .8byte .gomp_critical_user_
+# if KMP_OS_LINUX
     .size __kmp_unnamed_critical_addr,8
+# endif /* KMP_OS_LINUX */
 #endif /* KMP_ARCH_PPC64 || KMP_ARCH_AARCH64 */
 
 #if KMP_OS_LINUX
